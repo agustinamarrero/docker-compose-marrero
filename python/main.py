@@ -3,7 +3,6 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# Agregar nombre al servidor
 app.config['NAME'] = 'Servidor 2'
 
 
@@ -16,11 +15,8 @@ def ping():
 def forward():
     try:
         url = request.args.get('url')
-        server1_response = requests.get('http://localhost:8080/ping')
-        # server1_name = server1_response.json().get('serverName')
         response = requests.get(url)
         data = response.json()
-        # data['server1Name'] = server1_name
         data['server2Name'] = app.config['NAME']
         return jsonify(data)
     except:
@@ -28,4 +24,4 @@ def forward():
 
 
 if __name__ == '__main__':
-    app.run(port=4000)
+    app.run(host="0.0.0.0", port=4000)
