@@ -2,13 +2,13 @@ import axios from 'axios';
 import express from 'express';
 
 const app = express()
-const port = 8080
+const port = 80
 
 
 
 app.get('/ping', (req, res) => {
   const serverName = 'Servidor 1 ';
-  res.status(200).json({ message: 'Pong!', serverName });
+  res.status(200).json({ message: 'Pong!' });
 })
 
 app.get('/forward', async (req, res) => {
